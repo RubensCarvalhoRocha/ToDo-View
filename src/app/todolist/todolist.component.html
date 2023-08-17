@@ -5,15 +5,21 @@
     <h1>To-Do-List</h1>
     <!-- linha  -->
     <hr>  
+    
     <form #taskForm="ngForm">
         <div class="form-group">
-          <label for="exampleInputEmail1">Tarefa</label>
+          <label for="descricao">Tarefa</label>
           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Descricao da tarefa" ngModel name="task">
           <small id="errorMessage" class="form-text text-danger">(Campo Obrigatório)</small>
+          <hr>
+          <label for="prioridade">Prioridade</label>
+          <input type=number class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Prioridade da Tarefa" ngModel name="prioridade">
+          <small id="errorMessage" class="form-text text-danger">(Campo Obrigatório)</small>
+
         </div>
 
         <button id = "submitButton"type="submit" class="btn btn-primary">Adicionar tarefa</button>
-      </form>
+    </form>
     
      <hr>
      
