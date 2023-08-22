@@ -1,45 +1,67 @@
+<div class="container">
+  <h1>To-Do-List</h1>
+  <!-- linha  -->
+  <hr />
 
+  <form #taskForm="ngForm" (ngSubmit)="selecionar()">
+    <div class="form-group">
+      <label for="descricao">Tarefa</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Descricao da tarefa"
+        ngModel
+        name="task"
+        [(ngModel)]="tarefa.descricao"
+      />
+      <small id="errorMessage" class="form-text text-danger"
+        >(Campo Obrigatório)</small
+      >
+      <hr />
+      <label for="prioridade">Prioridade</label>
+      <input
+        type="number"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Prioridade da Tarefa"
+        ngModel
+        name="prioridade"
+        [(ngModel)]="tarefa.prioridade"
+      />
+      <small id="errorMessage" class="form-text text-danger"
+        >(Campo Obrigatório)</small
+      >
+    </div>
 
-<div class = "container">   
+    <button
+      type="submit"
+      (click)="cadastrar()"
+      class="btn btn-secondary"
+    >
+      Adicionar tarefa
+    </button>
+  </form>
 
-    <h1>To-Do-List</h1>
-    <!-- linha  -->
-    <hr>  
-    
-    <form #taskForm="ngForm">
-        <div class="form-group">
-          <label for="descricao">Tarefa</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Descricao da tarefa" ngModel name="task">
-          <small id="errorMessage" class="form-text text-danger">(Campo Obrigatório)</small>
-          <hr>
-          <label for="prioridade">Prioridade</label>
-          <input type=number class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Prioridade da Tarefa" ngModel name="prioridade">
-          <small id="errorMessage" class="form-text text-danger">(Campo Obrigatório)</small>
+  <hr />
 
-        </div>
-
-        <button id = "submitButton"type="submit" class="btn btn-primary">Adicionar tarefa</button>
-    </form>
-    
-     <hr>
-     
-     <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Task</th>
-            <th scope="col">Completed</th>
-            <th scope="col">Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Mark</td>
-            <td><input id="myCheckbox" type="checkbox"></td>
-            <td><button class="btn btn-danger btn-sm">Delete</button></td>
-          </tr>
-
- 
-        </tbody>
-      </table>
-
+  <table class="table">
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers" scope="col">{{ header }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of tarefas">
+        <td >{{ t.descricao }}</td>
+        <td >{{ t.prioridade }}</td>
+        <td ><input type="checkbox" /></td>
+        <td >
+          <button class="btn btn-danger btn-sm buttonCustom">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
