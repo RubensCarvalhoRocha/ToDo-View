@@ -36,11 +36,7 @@
       >
     </div>
 
-    <button
-      type="submit"
-      (click)="cadastrar()"
-      class="btn btn-secondary"
-    >
+    <button type="submit" (click)="cadastrar()" class="btn btn-secondary">
       Adicionar tarefa
     </button>
   </form>
@@ -55,11 +51,16 @@
     </thead>
     <tbody>
       <tr *ngFor="let t of tarefas">
-        <td >{{ t.descricao }}</td>
-        <td >{{ t.prioridade }}</td>
-        <td ><input type="checkbox" /></td>
-        <td >
-          <button class="btn btn-danger btn-sm buttonCustom">Delete</button>
+        <td>{{ t.descricao }}</td>
+        <td>{{ t.prioridade }}</td>
+        <td><input type="checkbox" /></td>
+        <td>
+          <button
+            class="btn btn-danger btn-sm buttonCustom"
+            (click)="deletar()"
+          >
+            Delete
+          </button>
         </td>
       </tr>
     </tbody>
