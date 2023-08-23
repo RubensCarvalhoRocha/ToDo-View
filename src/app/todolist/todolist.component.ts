@@ -38,22 +38,23 @@ export class TodolistComponent {
     console.log(this.tarefas);
   }
 
-  deletar(): void {
-    this.servico.deletar(this.tarefa.id).subscribe((retorno) => {
-      //Obter posicao do vetor onde esta o cliente
-      let posicao = this.tarefas.findIndex((obj) => {
-        return obj.id == this.tarefa.id;
-      });
+    //DELETAR
+    deletar(id: number): void {
+      this.servico.deletar(id).subscribe(
+        () => {
+          const posicao = this.tarefas.findIndex(tarefa => tarefa.id === id);
 
-      //Remover Tarefa do Vetor
-      this.tarefas.splice(posicao, 1);
+          if (posicao !== -1) {
+            this.tarefas.splice(posicao, 1);
+          }
 
-      //Limpar Formulario
-      this.tarefa = new Tarefa();
-
-      alert('Tarefa removida com sucesso!');
-    });
-  }
+          console.log('Tarefa removida com sucesso!');
+        },
+        erro => {
+          console.error('Erro ao deletar tarefa:', erro);
+        }
+      );
+    }
 
   ngOnInit() {
     this.selecionar();

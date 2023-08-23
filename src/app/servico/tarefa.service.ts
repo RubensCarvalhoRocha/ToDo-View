@@ -11,17 +11,15 @@ export class TarefaService {
 
   constructor(private http: HttpClient) {}
 
-  //Selecionar
   selecionar(): Observable<Tarefa[]> {
     return this.http.get<Tarefa[]>(this.url);
   }
 
-  //Cadastrar
   cadastrar(obj: Tarefa): Observable<Tarefa> {
     return this.http.post<Tarefa>(this.url, obj);
   }
 
   deletar(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.url}/${id}`); // For deleting a task by id
+    return this.http.delete<void>(`${this.url}/${id}`);
 }
 }
